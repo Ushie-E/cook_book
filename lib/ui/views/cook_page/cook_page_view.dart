@@ -1,3 +1,8 @@
+// ignore_for_file: unnecessary_null_comparison
+
+import 'dart:ui';
+
+import 'package:cook_book/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -14,8 +19,26 @@ class CookPageView extends StackedView<CookPageViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      body: GestureDetector(
+        onPanStart: (details) {},
+        child: Stack(
+          children: [
+            Center(
+              child: Assets.images.shotHut.image(),
+            ),
+            CustomPaint(
+              size: Size.infinite,
+              painter: MyPainter(
+                pointsList: viewModel.points,
+              ),
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.list_rounded),
+        onPressed: () {},
       ),
     );
   }
