@@ -1,9 +1,5 @@
-// ignore_for_file: unnecessary_null_comparison
-
-import 'dart:ui';
-
-import 'package:cook_book/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 
 import 'cook_page_viewmodel.dart';
@@ -18,34 +14,31 @@ class CookPageView extends StackedView<CookPageViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: GestureDetector(
-        onPanStart: (details) {},
-        child: Stack(
-          children: [
-            Center(
-              child: Assets.images.shotHut.image(),
-            ),
-            CustomPaint(
-              size: Size.infinite,
-              painter: MyPainter(
-                pointsList: viewModel.points,
-              ),
-            )
-          ],
-        ),
+      appBar: AppBar(
+        title: const Text("Cook Book"),
+        centerTitle: true,
+        backgroundColor: Colors.blueAccent,
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
-        child: const Icon(Icons.list_rounded),
-        onPressed: () {},
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: viewModel.select,
+                child: Container(
+                  decoration: const BoxDecoration(color: Colors.grey),
+                  padding: const EdgeInsets.all(6),
+                  child: const Text("Painter"),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
 
   @override
-  CookPageViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
+  CookPageViewModel viewModelBuilder(BuildContext context) =>
       CookPageViewModel();
 }
