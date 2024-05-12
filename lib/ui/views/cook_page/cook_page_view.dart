@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 
 import 'cook_page_viewmodel.dart';
@@ -13,16 +14,31 @@ class CookPageView extends StackedView<CookPageViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      appBar: AppBar(
+        title: const Text("Cook Book"),
+        centerTitle: true,
+        backgroundColor: Colors.blueAccent,
+      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: viewModel.select,
+                child: Container(
+                  decoration: const BoxDecoration(color: Colors.grey),
+                  padding: const EdgeInsets.all(6),
+                  child: const Text("Painter"),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
 
   @override
-  CookPageViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
+  CookPageViewModel viewModelBuilder(BuildContext context) =>
       CookPageViewModel();
 }
