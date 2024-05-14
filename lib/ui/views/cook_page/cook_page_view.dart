@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 
+import 'component/tile_cook_book.dart';
 import 'cook_page_viewmodel.dart';
 
 class CookPageView extends StackedView<CookPageViewModel> {
@@ -23,14 +23,32 @@ class CookPageView extends StackedView<CookPageViewModel> {
         child: SafeArea(
           child: Column(
             children: [
-              GestureDetector(
+              TileCookBook(
                 onTap: viewModel.select,
-                child: Container(
-                  decoration: const BoxDecoration(color: Colors.grey),
-                  padding: const EdgeInsets.all(6),
-                  child: const Text("Painter"),
-                ),
-              )
+                titleName: "Painter Canvas",
+                subTitleName: "Drawing and Painting using CustomPainter",
+              ),
+              TileCookBook(
+                onTap: () {},
+                titleName: "Loading PDF",
+                subTitleName: "Loading PDF file from Firebase Storage",
+              ),
+              TileCookBook(
+                onTap: () {},
+                titleName: "Theme Caching (Moor)",
+                subTitleName: "Save Current Theme in Local database",
+              ),
+              TileCookBook(
+                onTap: () {},
+                titleName: "Theme in Action",
+                subTitleName: "Toggle between Light & Dark themes",
+              ),
+              TileCookBook(
+                onTap: () {},
+                titleName: "Text-To-Speech Plugin",
+                subTitleName:
+                    "Code recipe to demonstrate usage of it Flutter Plugin",
+              ),
             ],
           ),
         ),
