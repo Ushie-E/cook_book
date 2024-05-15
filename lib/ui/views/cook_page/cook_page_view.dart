@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:stacked/stacked.dart';
 
 import 'component/tile_cook_book.dart';
@@ -21,35 +22,43 @@ class CookPageView extends StackedView<CookPageViewModel> {
       ),
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Column(
-            children: [
-              TileCookBook(
-                onTap: viewModel.select,
-                titleName: "Painter Canvas",
-                subTitleName: "Drawing and Painting using CustomPainter",
-              ),
-              TileCookBook(
-                onTap: () {},
-                titleName: "Loading PDF",
-                subTitleName: "Loading PDF file from Firebase Storage",
-              ),
-              TileCookBook(
-                onTap: () {},
-                titleName: "Theme Caching (Moor)",
-                subTitleName: "Save Current Theme in Local database",
-              ),
-              TileCookBook(
-                onTap: () {},
-                titleName: "Theme in Action",
-                subTitleName: "Toggle between Light & Dark themes",
-              ),
-              TileCookBook(
-                onTap: () {},
-                titleName: "Text-To-Speech Plugin",
-                subTitleName:
-                    "Code recipe to demonstrate usage of it Flutter Plugin",
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(5),
+            child: Column(
+              children: [
+                TileCookBook(
+                  onTap: viewModel.select,
+                  titleName: "Painter Canvas",
+                  subTitleName: "Drawing and Painting using CustomPainter",
+                ),
+                const Gap(6),
+                TileCookBook(
+                  onTap: () {},
+                  titleName: "Loading PDF",
+                  subTitleName: "Loading PDF file from Firebase Storage",
+                ),
+                const Gap(6),
+                TileCookBook(
+                  onTap: () {},
+                  titleName: "Theme Caching (Moor)",
+                  subTitleName: "Save Current Theme in Local database",
+                ),
+                const Gap(6),
+                TileCookBook(
+                  onTap: () {},
+                  titleName: "Theme in Action",
+                  subTitleName: "Toggle between Light & Dark themes",
+                ),
+                const Gap(6),
+                TileCookBook(
+                  onTap: () {},
+                  titleName: "Text-To-Speech Plugin",
+                  subTitleName:
+                      "Code recipe to demonstrate usage of it Flutter Plugin",
+                ),
+                const Gap(6),
+              ],
+            ),
           ),
         ),
       ),
