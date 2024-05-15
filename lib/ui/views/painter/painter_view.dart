@@ -1,4 +1,5 @@
 import 'package:cook_book/gen/assets.gen.dart';
+import 'package:cook_book/ui/views/painter/component/list_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -29,22 +30,44 @@ class PainterView extends StackedView<PainterViewModel> {
               painter: MyPainter(
                 pointsList: viewModel.points,
               ),
-            )
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Expand',
-        backgroundColor: Colors.blue,
-        onPressed: viewModel.toggleExpand,
-        child: Icon(viewModel.isExpanded ? Icons.close : Icons.add),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            heroTag: "paint_stroke",
+            tooltip: 'Stroke',
+            onPressed: () {}, // fabOptions.pickStroke,
+            child: const Icon(Icons.brush),
+          ),
+          FloatingActionButton(
+            heroTag: "paint_opacity",
+            tooltip: 'Opacity',
+            onPressed: () {}, // fabOptions.opacity,
+            child: const Icon(Icons.opacity),
+          ),
+          FloatingActionButton(
+            heroTag: "erase",
+            tooltip: "Erase",
+            onPressed: () {}, // fabOptions.erase,
+            child: const Icon(Icons.clear),
+          ),
+          for (var item in viewModel.fabOptions.colorItems)
+            FloatingActionButton(
+              heroTag: item.heroTag,
+              backgroundColor: Colors.white,
+              tooltip: item.tooltip,
+              onPressed: item.onPressed,
+              child: ColorMenuItem(model: item),
+            ),
+        ],
       ),
     );
   }
 
   @override
-  PainterViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      PainterViewModel();
+  PainterViewModel viewModelBuilder(BuildContext context) => PainterViewModel();
 }
