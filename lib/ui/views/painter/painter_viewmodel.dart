@@ -1,10 +1,15 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:ui';
+import 'package:cook_book/app/app.dialogs.dart';
+import 'package:cook_book/app/app.locator.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class PainterViewModel extends BaseViewModel {
+  final _dialogService = locator<DialogService>();
+
   List<TouchPoints> get points => [];
 
   void start(DragStartDetails details) {}
@@ -19,6 +24,26 @@ class PainterViewModel extends BaseViewModel {
   void toggleVisibility() {
     _isVisible = !_isVisible;
     rebuildUi();
+  }
+
+  void opacity() {
+    _dialogService.showCustomDialog(
+      variant: DialogType.opacity,
+    );
+  }
+
+  void pickingRed() {}
+
+  void pickingGreen() {}
+
+  void pickingPink() {}
+
+  void pickingBlue() {}
+
+  void stroke() {
+    _dialogService.showCustomDialog(
+      variant: DialogType.pickStroke,
+    );
   }
 }
 

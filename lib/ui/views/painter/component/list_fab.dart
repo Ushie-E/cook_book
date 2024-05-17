@@ -15,7 +15,7 @@ class FloatingActionOption extends ViewModelWidget<PainterViewModel> {
       children: [
         //FAB for choosing stroke
         FloatingActionButton(
-          onPressed: () {},
+          onPressed: viewModel.stroke,
           heroTag: "paint_stroke",
           tooltip: 'Stroke',
           child: const Icon(Icons.brush),
@@ -23,7 +23,7 @@ class FloatingActionOption extends ViewModelWidget<PainterViewModel> {
         const Gap(7),
         //FAB for choosing opacity
         FloatingActionButton(
-          onPressed: () {},
+          onPressed: viewModel.opacity,
           heroTag: "paint_opacity",
           tooltip: 'Opacity',
           child: const Icon(Icons.opacity),
@@ -39,7 +39,7 @@ class FloatingActionOption extends ViewModelWidget<PainterViewModel> {
         //FAB for picking red color
         const Gap(7),
         FloatingActionButton(
-          onPressed: () {},
+          onPressed: viewModel.pickingRed,
           backgroundColor: Colors.white,
           heroTag: "color_red",
           tooltip: 'Color',
@@ -51,7 +51,7 @@ class FloatingActionOption extends ViewModelWidget<PainterViewModel> {
         const Gap(7),
         //FAB for picking green color
         FloatingActionButton(
-          onPressed: () {},
+          onPressed: viewModel.pickingGreen,
           backgroundColor: Colors.white,
           heroTag: "color_green",
           tooltip: 'Color',
@@ -66,7 +66,7 @@ class FloatingActionOption extends ViewModelWidget<PainterViewModel> {
           backgroundColor: Colors.white,
           heroTag: "color_pink",
           tooltip: 'Color',
-          onPressed: () {},
+          onPressed: viewModel.pickingPink,
           child: ColorMenuItem(
             color: Colors.pink,
             onPressed: () {},
@@ -78,7 +78,7 @@ class FloatingActionOption extends ViewModelWidget<PainterViewModel> {
           backgroundColor: Colors.white,
           heroTag: "color_blue",
           tooltip: 'Color',
-          onPressed: () {},
+          onPressed: viewModel.pickingBlue,
           child: ColorMenuItem(
             color: Colors.blue,
             onPressed: () {},
