@@ -1,8 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:ui';
-
-import 'package:cook_book/ui/views/painter/component/list_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -15,36 +13,13 @@ class PainterViewModel extends BaseViewModel {
 
   void end(DragEndDetails details) {}
 
-  final FABOptionModel fabOptions = FABOptionModel(
-    colorItems: [
-      ColorMenuItemModel(
-        heroTag: "color_red",
-        tooltip: "Red",
-        color: Colors.red,
-        onPressed: () {
-          // Handle onPressed for red color
-        },
-      ),
-      ColorMenuItemModel(
-        heroTag: "color_blue",
-        tooltip: "Blue",
-        color: Colors.blue,
-        onPressed: () {
-          // Handle onPressed for blue color
-        },
-      ),
-      // Add more ColorMenuItemModel instances as needed
-    ],
-    pickStroke: () {
-      // Handle pickStroke action
-    },
-    opacity: () {
-      // Handle opacity action
-    },
-    erase: () {
-      // Handle erase action
-    },
-  );
+  bool _isVisible = false;
+  bool get isVisible => _isVisible;
+
+  void toggleVisibility() {
+    _isVisible = !_isVisible;
+    rebuildUi();
+  }
 }
 
 class TouchPoints {
