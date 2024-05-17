@@ -1,26 +1,25 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class PainterViewModel extends BaseViewModel {
   List<TouchPoints> get points => [];
 
-  bool _isExpanded = false;
-
-  bool get isExpanded => _isExpanded;
-
-  void toggleExpand() {
-    _isExpanded = !_isExpanded;
-  }
-
   void start(DragStartDetails details) {}
 
   void update(DragUpdateDetails details) {}
 
   void end(DragEndDetails details) {}
+
+  bool _isVisible = false;
+  bool get isVisible => _isVisible;
+
+  void toggleVisibility() {
+    _isVisible = !_isVisible;
+    rebuildUi();
+  }
 }
 
 class TouchPoints {
