@@ -1,10 +1,8 @@
+import 'package:cook_book/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import 'opacity_dialog_model.dart';
-
-class OpacityDialog extends StackedView<OpacityDialogModel> {
+class OpacityDialog extends StatelessWidget {
   final DialogRequest request;
   final Function(DialogResponse) completer;
 
@@ -15,19 +13,45 @@ class OpacityDialog extends StackedView<OpacityDialogModel> {
   }) : super(key: key);
 
   @override
-  Widget builder(
+  Widget build(
     BuildContext context,
-    OpacityDialogModel viewModel,
-    Widget? child,
   ) {
-    return const ClipOval(
+    return ClipOval(
       child: AlertDialog(
-        actions: [],
+        actions: [
+          ElevatedButton(
+            child: const Icon(
+              Icons.opacity,
+              size: 24,
+            ),
+            onPressed: () async {
+              completer(DialogResponse(confirmed: true, data: opacities));
+              Navigator.pop;
+            },
+          ),
+          ElevatedButton(
+            child: const Icon(
+              Icons.opacity,
+              size: 40,
+            ),
+            onPressed: () async {
+              completer(DialogResponse(confirmed: true, data: 0.5));
+              Navigator.pop;
+            },
+          ),
+          ElevatedButton(
+            child: const Icon(
+              Icons.opacity,
+              size: 60,
+            ),
+            onPressed: () async {
+              //not transparent at all.
+              completer(DialogResponse(confirmed: true, data: 1.0));
+              Navigator.pop;
+            },
+          ),
+        ],
       ),
     );
   }
-
-  @override
-  OpacityDialogModel viewModelBuilder(BuildContext context) =>
-      OpacityDialogModel();
 }
