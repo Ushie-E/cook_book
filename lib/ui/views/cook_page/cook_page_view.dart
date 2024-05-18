@@ -17,7 +17,7 @@ class CookPageView extends StackedView<CookPageViewModel> {
   ) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Cook Book"),
+        title: const Text(kCookBook),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
       ),
