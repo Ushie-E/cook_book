@@ -1,10 +1,8 @@
+import 'package:cook_book/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import 'pick_stroke_dialog_model.dart';
-
-class PickStrokeDialog extends StackedView<PickStrokeDialogModel> {
+class PickStrokeDialog extends StatelessWidget {
   final DialogRequest request;
   final Function(DialogResponse) completer;
 
@@ -15,19 +13,54 @@ class PickStrokeDialog extends StackedView<PickStrokeDialogModel> {
   }) : super(key: key);
 
   @override
-  Widget builder(
+  Widget build(
     BuildContext context,
-    PickStrokeDialogModel viewModel,
-    Widget? child,
   ) {
-    return const ClipOval(
+    return ClipOval(
       child: AlertDialog(
-        actions: [],
+        actions: [
+          //Resetting to default stroke value
+          ElevatedButton(
+            child: const Icon(
+              Icons.clear,
+            ),
+            onPressed: () async {
+              completer(DialogResponse(confirmed: true, data: strokeWidth));
+              Navigator.pop;
+            },
+          ),
+          ElevatedButton(
+            child: const Icon(
+              Icons.brush,
+              size: 24,
+            ),
+            onPressed: () async {
+              completer(DialogResponse(confirmed: true, data: 10.0));
+              Navigator.pop;
+            },
+          ),
+          ElevatedButton(
+            child: const Icon(
+              Icons.brush,
+              size: 40,
+            ),
+            onPressed: () async {
+              completer(DialogResponse(confirmed: true, data: 30.0));
+              Navigator.pop;
+            },
+          ),
+          ElevatedButton(
+            child: const Icon(
+              Icons.brush,
+              size: 60,
+            ),
+            onPressed: () async {
+              completer(DialogResponse(confirmed: true, data: 50.0));
+              Navigator.pop;
+            },
+          ),
+        ],
       ),
     );
   }
-
-  @override
-  PickStrokeDialogModel viewModelBuilder(BuildContext context) =>
-      PickStrokeDialogModel();
 }
