@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 const double _tinySize = 5.0;
 const double _smallSize = 10.0;
@@ -8,16 +9,21 @@ const double _mediumSize = 25.0;
 const double _largeSize = 50.0;
 const double _massiveSize = 120.0;
 
-const Widget horizontalSpaceTiny = SizedBox(width: _tinySize);
-const Widget horizontalSpaceSmall = SizedBox(width: _smallSize);
-const Widget horizontalSpaceMedium = SizedBox(width: _mediumSize);
-const Widget horizontalSpaceLarge = SizedBox(width: _largeSize);
+const Widget horizontalSpaceTiny = Gap(_tinySize);
+const Widget horizontalSpaceSmall = Gap(_smallSize);
+const Widget horizontalSpaceMedium = Gap(_mediumSize);
+const Widget horizontalSpaceLarge = Gap(_largeSize);
 
-const Widget verticalSpaceTiny = SizedBox(height: _tinySize);
-const Widget verticalSpaceSmall = SizedBox(height: _smallSize);
-const Widget verticalSpaceMedium = SizedBox(height: _mediumSize);
-const Widget verticalSpaceLarge = SizedBox(height: _largeSize);
-const Widget verticalSpaceMassive = SizedBox(height: _massiveSize);
+const Widget verticalSpaceTiny = Gap(_tinySize);
+const Widget verticalSpaceSmall = Gap(_smallSize);
+const Widget verticalSpaceMedium = Gap(_mediumSize);
+const Widget verticalSpaceLarge = Gap(_largeSize);
+const Widget verticalSpaceMassive = Gap(_massiveSize);
+
+double opacities = 1.0;
+StrokeCap strokeType = StrokeCap.round;
+double strokeWidth = 3.0;
+Color selectedColor = Colors.black;
 
 Widget spacedDivider = const Column(
   children: <Widget>[
@@ -27,7 +33,7 @@ Widget spacedDivider = const Column(
   ],
 );
 
-Widget verticalSpace(double height) => SizedBox(height: height);
+Widget verticalSpace(double height) => Gap(height);
 
 double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
 double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
