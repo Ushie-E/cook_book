@@ -1,5 +1,6 @@
 import 'package:cook_book/gen/assets.gen.dart';
 import 'package:cook_book/ui/views/painter/component/list_fab.dart';
+import 'package:cook_book/ui/views/painter/component/touch_point.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -17,8 +18,8 @@ class PainterView extends StackedView<PainterViewModel> {
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         body: GestureDetector(
-          onPanStart: viewModel.start,
-          onPanUpdate: viewModel.update,
+          onPanStart: (details) => viewModel.start(details, context),
+          onPanUpdate: (details) => viewModel.update(details, context),
           onPanEnd: viewModel.end,
           child: Stack(
             children: [

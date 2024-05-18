@@ -1,6 +1,6 @@
+import 'package:cook_book/ui/common/ui_helpers.dart';
 import 'package:cook_book/ui/views/painter/painter_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:stacked/stacked.dart';
 
 class FloatingActionOption extends ViewModelWidget<PainterViewModel> {
@@ -15,76 +15,76 @@ class FloatingActionOption extends ViewModelWidget<PainterViewModel> {
       children: [
         //FAB for choosing stroke
         FloatingActionButton(
-          onPressed: () {},
+          onPressed: viewModel.stroke,
           heroTag: "paint_stroke",
           tooltip: 'Stroke',
           child: const Icon(Icons.brush),
         ),
-        const Gap(7),
+        horizontalSpaceSmall,
         //FAB for choosing opacity
         FloatingActionButton(
-          onPressed: () {},
+          onPressed: viewModel.opacity,
           heroTag: "paint_opacity",
           tooltip: 'Opacity',
           child: const Icon(Icons.opacity),
         ),
         //FAB for resetting screen
-        const Gap(7),
+        horizontalSpaceSmall,
         FloatingActionButton(
-          onPressed: viewModel.toggleVisibility,
+          onPressed: viewModel.erase,
           heroTag: "erase",
           tooltip: "Erase",
           child: const Icon(Icons.clear),
         ),
         //FAB for picking red color
-        const Gap(7),
+        horizontalSpaceSmall,
         FloatingActionButton(
-          onPressed: () {},
+          onPressed: viewModel.pickingRed,
           backgroundColor: Colors.white,
           heroTag: "color_red",
           tooltip: 'Color',
           child: ColorMenuItem(
             color: Colors.red,
-            onPressed: () {},
+            onPressed: viewModel.pickingRed,
           ),
         ),
-        const Gap(7),
+        horizontalSpaceSmall,
         //FAB for picking green color
         FloatingActionButton(
-          onPressed: () {},
+          onPressed: viewModel.pickingGreen,
           backgroundColor: Colors.white,
           heroTag: "color_green",
           tooltip: 'Color',
           child: ColorMenuItem(
             color: Colors.green,
-            onPressed: () {},
+            onPressed: viewModel.pickingGreen,
           ),
         ),
         //FAB for picking pink color
-        const Gap(7),
+        horizontalSpaceSmall,
         FloatingActionButton(
           backgroundColor: Colors.white,
           heroTag: "color_pink",
           tooltip: 'Color',
-          onPressed: () {},
+          onPressed: viewModel.pickingPink,
           child: ColorMenuItem(
             color: Colors.pink,
-            onPressed: () {},
+            onPressed: viewModel.pickingPink,
           ),
         ),
         //FAB for picking blue color
-        const Gap(7),
+        horizontalSpaceSmall,
         FloatingActionButton(
           backgroundColor: Colors.white,
           heroTag: "color_blue",
           tooltip: 'Color',
-          onPressed: () {},
+          onPressed: viewModel.pickingBlue,
           child: ColorMenuItem(
             color: Colors.blue,
-            onPressed: () {},
+            onPressed: viewModel.pickingBlue,
           ),
         ),
-        const Gap(7),
+        horizontalSpaceSmall,
         FloatingActionButton(
           backgroundColor: Colors.blue,
           onPressed: viewModel.toggleVisibility,
@@ -97,7 +97,7 @@ class FloatingActionOption extends ViewModelWidget<PainterViewModel> {
   }
 }
 
-class ColorMenuItem extends StatefulWidget {
+class ColorMenuItem extends StatelessWidget {
   final Color? color;
   final Function()? onPressed;
 
@@ -108,24 +108,15 @@ class ColorMenuItem extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  ColorMenuItemState createState() => ColorMenuItemState();
-}
-
-class ColorMenuItemState extends State<ColorMenuItem> {
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          widget.onPressed;
-        });
-      },
+      onTap: onPressed,
       child: ClipOval(
         child: Container(
           padding: const EdgeInsets.only(bottom: 8.0),
           height: 36,
           width: 36,
-          color: widget.color,
+          color: color,
         ),
       ),
     );
