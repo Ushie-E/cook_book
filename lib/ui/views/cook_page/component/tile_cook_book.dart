@@ -1,5 +1,5 @@
+import 'package:cook_book/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 class TileCookBook extends StatelessWidget {
   const TileCookBook({
@@ -31,20 +31,20 @@ class TileCookBook extends StatelessWidget {
           children: [
             Text(
               titleName!,
-              style: const TextStyle(fontSize: 22),
+              style: const TextStyle(fontSize: 20),
             ),
-            const Gap(16),
+            horizontalSpaceMedium,
           ],
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(subTitleName!),
-            const Gap(6),
+            horizontalSpaceTiny,
             const Row(
               children: [
                 Icon(Icons.video_collection_sharp),
-                Gap(6),
+                horizontalSpaceSmall,
                 Icon(Icons.unfold_less_rounded)
               ],
             )
