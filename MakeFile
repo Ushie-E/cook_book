@@ -1,32 +1,26 @@
-#Create Makefile
-
-# Update these variable
-
 BASE_HREF = '/cook_book.io/'
 GITHUB_REPO = https://github.com/Ushie-E/cook_book.io.git
 BUILD_VERSION := $(shell grep 'version:' pubspec.yaml | awk '{print $$2}')
 
 deploy-web:
-  @echo "Clean existing repository..."
-  flutter clean
+	@echo "Clean existing repository..."
+	flutter clean
 
-  @echo "Getting packages..."
-  flutter pub get
+	@echo "Getting packages..."
+	flutter pub get
 
-  @echo "Building for web..."
-  flutter build web --base-href $(BASE_HRE) --release
+	@echo "Building for web..."
+	flutter build web --base-href $(BASE_HREF) --release
 
-  @echo "Deploying to git repository"
-  cd build/web && \
-  git init && \
-  git add --all && \
-  git commit -m "Deploy version $(BUILD_VERSION)" && \
-  git branch -M main && \
-  git remote add origin $(GITHUB_REPO) && \
-  git push -u --force origin main
+	@echo "Deploying to git repository"
+	cd build/web && \
+	git init && \
+	git add --all && \
+	git commit -m "Deploy version $(BUILD_VERSION)" && \
+	git branch -M main && \
+	git remote add origin $(GITHUB_REPO) && \
+	git push -u --force origin main
 
-  cd ../..
-  @echo "🟢 Finished Deploy"
+	@echo "🟢 Finished Deploy"
 
 .PHONY: deploy-web
-
